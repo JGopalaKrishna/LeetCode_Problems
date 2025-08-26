@@ -1,8 +1,17 @@
 import math
 class Solution:
     def areaOfMaxDiagonal(self, dimensions: List[List[int]]) -> int:
-        l=[math.sqrt(i*i+j*j) for i,j in dimensions]
-        max_val=max(l)
-        indices = [i for i, val in enumerate(l) if val == max_val]
-        r=[dimensions[i][0]*dimensions[i][1] for i in indices]
-        return max(r)
+        max_diag = 0
+        max_area = 0
+        
+        for length, width in dimensions:
+            diag = length * length + width * width  # no sqrt needed
+            area = length * width
+            
+            if diag > max_diag:
+                max_diag = diag
+                max_area = area
+            elif diag == max_diag:
+                max_area = max(max_area, area)
+
+        return max_area
