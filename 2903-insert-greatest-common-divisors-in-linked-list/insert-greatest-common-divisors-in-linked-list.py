@@ -8,7 +8,6 @@ class Solution:
     def insertGreatestCommonDivisors(self, head: Optional[ListNode]) -> Optional[ListNode]:
         dummy=head
         while dummy and dummy.next:
-            New_Node=ListNode(math.gcd(dummy.val,dummy.next.val),dummy.next)
-            dummy.next=New_Node
+            dummy.next=ListNode(math.gcd(dummy.val,dummy.next.val),dummy.next)
             dummy=dummy.next.next
         return head
